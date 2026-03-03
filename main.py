@@ -215,6 +215,21 @@ for i in vins["Prix"]:
     if type(i) is not float:
         print("Error!")
 
+# Question 11 : 
+
+moyenne_robert = vins.groupby("Appelation")["Parker"].mean()
+moyenne_robert["Parker"] = moyenne_robert["Parker"].fillna(0)
+
+#Question 12 :
+
+def get_moyenne(name):
+    moyenne = vins.groupby("Appelation")[name].mean()
+    moyenne[name] = moyenne_robert[name].fillna(0)
+    return(moyenne)
+
+moyenne_robinson = get_moyenne("Robinson")
+moyenne_suckling = get_moyenne("Suckling")
+
 # Tests
 # print(informations(getsoup("https://www.millesima.fr/chateau-gloria-2016.html")))
 # print(f"Prix : {prix(getsoup("https://www.millesima.fr/chateau-citran-2018.html"))}") # OK
